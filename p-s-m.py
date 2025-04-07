@@ -1,3 +1,4 @@
+
 import re
 import random
 import string
@@ -75,6 +76,26 @@ def main():
     # Set background image
     set_background("image.png")  # Ensure the image file is in the correct directory
 
+    # Apply custom CSS for text colors to match the theme
+    st.markdown(
+        """
+        <style>
+        h1, h2, h3, p, label {
+            color: #E0FFFF !important;  /* Light cyan for headers and labels */
+        }
+        .stTextInput > div > div > input {
+            color: #FFFFFF !important;  /* White text for input fields */
+            background-color: rgba(0, 0, 0, 0.5) !important;  /* Semi-transparent black background for input */
+        }
+        .stButton > button {
+            background-color: #00B7EB !important;  /* Electric blue for buttons */
+            color: #FFFFFF !important;  /* White text for buttons */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
     st.markdown("<h1 style='text-align: center;'>🔐 Password Strength Meter</h1>", unsafe_allow_html=True)
     st.markdown("✅ <i>Created by Ammara Dawood</i>", unsafe_allow_html=True)
     st.image("https://cdn-icons-png.flaticon.com/512/2889/2889676.png", width=100)
@@ -100,7 +121,7 @@ def main():
         new_password = generate_strong_password()
         st.text_input("🔐 Your Strong Password:", value=new_password)
 
-    # ✅ Watermark at the very end
+    # ✅ Watermark at the very end with the same cyan color
     st.markdown(
         "<hr style='margin-top: 40px;'>"
         "<p style='text-align: center; font-size: 14px; color: #00FFFF;'>"
